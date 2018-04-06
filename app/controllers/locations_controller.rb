@@ -14,9 +14,9 @@ class LocationsController < ApplicationController
   def create
     @location = current_user.locations.build(location_params)
     if @location.save
-      redirect_to location_path(@location), notice: "Saved..."
+      redirect_to @location, notice: "Saved..."
     else
-      flash[:alert] = "something went wrong..."
+      flash[:alert] = "something went wrong...urgagagahhh!!"
       render :new
     end  
   end
@@ -39,7 +39,7 @@ class LocationsController < ApplicationController
     end
     
     def location_params
-      params.require(:location).permit(:location_type, :location_name, :country_code, :timezone)
+      params.require(:location).permit(:location_type, :location_name)
     end 
     
     def is_authorized
